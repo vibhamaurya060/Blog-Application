@@ -1,4 +1,4 @@
-// app.js
+
 const express = require('express');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
@@ -13,6 +13,9 @@ connectDB();
 // Middleware
 app.use(express.json());
 
+app.get('/', (req,res)=>{
+    res.send('This is home route')
+})
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);

@@ -1,4 +1,4 @@
-// routes/userRoutes.js
+
 const express = require('express');
 const { auth } = require('../middleware/authMiddleware');
 const { getAllUsers } = require('../controllers/userController');

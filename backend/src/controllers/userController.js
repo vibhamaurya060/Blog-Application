@@ -1,4 +1,4 @@
-// controllers/userController.js
+
 const User = require('../models/User');
 
 // Get all users
@@ -10,7 +10,7 @@ exports.getAllUsers = async (req, res) => {
     }
 
     // Retrieve all users from the database
-    const users = await User.find().select('-password'); // Exclude passwords from the response
+    const users = await User.find().select('-password'); 
 
     res.status(200).json(users);
   } catch (err) {

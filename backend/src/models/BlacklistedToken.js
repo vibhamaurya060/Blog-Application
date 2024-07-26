@@ -1,4 +1,4 @@
-// models/BlacklistedToken.js
+
 const mongoose = require('mongoose');
 
 const BlacklistedTokenSchema = new mongoose.Schema({
