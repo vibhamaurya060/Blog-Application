@@ -4,89 +4,70 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const BlacklistedToken = require('../models/BlacklistedToken');
 
-
 // Register user
 exports.register = async (req, res) => {
   const { username, email, password, role } = req.body;
 
-  try {
-    let user = await User.findOne({ email });
+  // Validate that all fields are provided
+  if (!username || !email || !password || !role) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
 
-    if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
+  try {
+    // Check if the user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already in use' });
     }
 
-    user = new User({
-      username,
-      email,
-      password,
-      role,
-    });
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, salt);
-    await user.save();
+    // Create a new user with the hashed password
+    const newUser = new User({ username, email, password: hashedPassword, role });
+    await newUser.save();
 
-    const payload = {
-      user: {
-        id: user.id,
-        role: user.role,
-      },
-    };
-
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' },
-      (err, token) => {
-        if (err) throw err;
-        res.status(201).json({ message: 'User registered successfully', token });
-      }
-    );
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 // Login user
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
+  // Validate that email and password are provided
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' });
+  }
+
   try {
+    // Find user by email
     const user = await User.findOne({ email });
-
     if (!user) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid email or password' });
     }
 
+    // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    const payload = {
-      user: {
-        id: user.id,
-        role: user.role,
-      },
-    };
+    // Generate JWT token
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(200).json({ token, message: 'Login successful' });
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+
 
 // Logout user
 exports.logout = async (req, res) => {

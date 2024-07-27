@@ -1,0 +1,131 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #232f34; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .nav-brand a {
+    text-decoration: none;
+    color: #f9aa33; 
+    transition: color 0.3s ease;
+  }
+  
+  .nav-brand a:hover {
+    color: #ffb74d; 
+  }
+  
+  .nav-items {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-items li {
+    position: relative;
+  }
+  
+  .nav-items a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .nav-items a:hover {
+    color: #f9aa33; 
+    transform: translateY(-2px);
+  }
+  
+  .btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .btn-signup {
+    border: 2px solid #f9aa33; 
+    color: #ffffff; 
+    background-color: transparent; 
+  }
+  
+  .btn-signup:hover {
+    background-color: #ffffff; 
+    color: #232f34; 
+    border-color: #f9aa33; 
+  }
+  
+  .btn-login {
+    background-color: transparent;
+    color: #f9aa33; 
+    border: 2px solid #f9aa33; 
+  }
+  
+  .btn-login:hover {
+    background-color: #ffffff; 
+    color: #232f34; 
+  }
+  
+  .logout-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #d32f2f; 
+    color: #ffffff; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff6659;
+    transform: translateY(-2px);
+  }
+  
+  /* Write Blog Link */
+  .post-blog-link {
+    text-decoration: none;
+    color: #f9aa33; 
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 15px;
+    border: 2px solid #f9aa33; 
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .post-blog-link:hover {
+    background-color: #ffffff; 
+    color: #232f34; 
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+    }
+  
+    .nav-items {
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+    }
+  
+    .post-blog-link {
+      margin-top: 15px;
+    }
+  }
+  

@@ -1,0 +1,204 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    color: #f57c00;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #f57c00;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  /* Post List */
+  .post-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .post-item {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Post Titles */
+  .post-title {
+    font-size: 1.8rem;
+    color: #f57c00;
+    margin: 0 0 15px;
+    font-weight: bold;
+  }
+  
+  /* Post Content */
+  .post-content {
+    margin: 15px 0;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  /* Post Author and Status */
+  .post-author,
+  .post-status {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  .post-author::before,
+  .post-status::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #f57c00;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  
+  /* Button Styles */
+  .delete-button {
+    background-color: #f57c00;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .delete-button:hover {
+    background-color: #e65100;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .delete-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.3);
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagination-button {
+    background-color: #f57c00;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-button:hover {
+    background-color: #e65100;
+  }
+  
+  .pagination-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-info {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+
+  /* /////////// */
+
+  /* blogList.css */
+.comments-section {
+  margin-top: 20px;
+}
+
+.comment-form {
+  margin-bottom: 20px;
+}
+
+.comment-form h3 {
+  margin-bottom: 10px;
+}
+
+.comment-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.comment-form input, .comment-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.comment-form button {
+  background-color: #f9aa33; /* Accent Color */
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-item p {
+  margin: 0;
+}
